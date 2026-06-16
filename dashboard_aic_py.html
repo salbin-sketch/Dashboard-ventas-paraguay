@@ -118,6 +118,18 @@
   #loadingOverlay p { color:var(--primary); font-weight:600; font-size:14px; }
   #loadingOverlay small { color:var(--muted); font-size:12px; }
   .fadein { animation:fadein .4s ease; }
+  @media print {
+    body { background:#fff; }
+    header .btns, #loadingOverlay, #tokenScreen, #errorBar, .chart-tabs { display:none !important; }
+    header { margin-bottom:16px; }
+    .table-wrap, .card, .chart-card, .kpi-card { break-inside:avoid; }
+    .kpi-grid { grid-template-columns: repeat(5, 1fr) !important; }
+    .two-col  { grid-template-columns: 1fr 1fr !important; }
+    #app { padding:12px; max-width:100%; }
+    .section { margin-bottom:18px; }
+    .chart-card canvas { max-height:200px; }
+    a { text-decoration:none; color:inherit; }
+  }
 </style>
 </head>
 <body>
@@ -151,6 +163,7 @@
     </div>
     <div class="btns">
       <a class="btn btn-ghost" href="https://aic-economia-group.monday.com/boards/9673296464" target="_blank">📋 Ver en Monday</a>
+      <button class="btn btn-ghost" onclick="exportPDF()">⬇ Exportar PDF</button>
       <button class="btn btn-primary" id="refreshBtn" onclick="loadData()">↻ Actualizar datos</button>
       <button class="btn btn-danger" onclick="logout()" title="Cambiar token">🔑</button>
     </div>
@@ -498,6 +511,14 @@ function setLoading(show, msg="") {
 function setLoadingMsg(msg) { document.getElementById("loadingMsg").textContent=msg; }
 
 // ─── Init ────────────────────────────────────────────────────────────────────
+function exportPDF() {
+  const title = document.title;
+  const updated = document.getElementById("updatedAt")?.textContent || "";
+  document.title = "Dashboard Ventas e Ingresos AIC — PY" + (updated ? " · " + updated : "");
+  window.print();
+  document.title = title;
+}
+
 function init() {
   const token = getToken();
   if(token) {

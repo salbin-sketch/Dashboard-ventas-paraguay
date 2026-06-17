@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0068)file:///C:/Users/SEBASTIAN%20ALBIN/Downloads/dashboard_aic_py_7.html -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="es">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard Ventas e Ingresos AIC — PY</title>
-<script src="./dashboard_aic_py_files/chart.umd.min.js.descarga"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f4f6f9; color: #1a3a5c; min-height: 100vh; }
@@ -135,7 +135,7 @@
 <body>
 
 <!-- TOKEN SCREEN -->
-<div id="tokenScreen" style="display: none;">
+<div id="tokenScreen">
   <div class="logo">AIC ECONOMÍA · PY</div>
   <p class="sub">Dashboard de Ventas e Ingresos. Para acceder, ingresá el token de API de Monday.com con permisos de lectura sobre el tablero <strong>Contratos_ingresos</strong>.</p>
   <div class="card">
@@ -148,18 +148,18 @@
 </div>
 
 <!-- LOADING OVERLAY -->
-<div id="loadingOverlay" style="display: none;">
+<div id="loadingOverlay">
   <div class="spinner"></div>
-  <p id="loadingMsg">Calculando indicadores…</p>
+  <p id="loadingMsg">Conectando con Monday.com…</p>
   <small>Calculando indicadores en tiempo real</small>
 </div>
 
 <!-- DASHBOARD -->
-<div id="app" style="display: block;">
+<div id="app">
   <header>
     <div>
       <h1>Dashboard Ventas e Ingresos — AIC · PY</h1>
-      <p class="meta">Fuente: Contratos_Ingresos PY · Columnas AIC · <span id="updatedAt">Actualizado: 8:31:42 p. m.</span></p>
+      <p class="meta">Fuente: Contratos_Ingresos PY · Columnas AIC · <span id="updatedAt"></span></p>
     </div>
     <div class="btns">
       <a class="btn btn-ghost" href="https://aic-economia-group.monday.com/boards/9673296464" target="_blank">📋 Ver en Monday</a>
@@ -169,134 +169,7 @@
     </div>
   </header>
   <div id="errorBar" class="error-bar" style="display:none"></div>
-  <div id="content">
-  <div class="fadein">
-
-    <!-- KPIs -->
-    <div class="section">
-      <div class="section-title"><span></span><h2>Indicadores — en USD (participación AIC)</h2></div>
-      <div class="kpi-grid">
-        <div class="kpi-card" style="border-top-color:#1a3a5c"><div class="label">Ventas AIC 2026</div><div class="value">$112K</div><div class="sub">4 contratos</div></div>
-        <div class="kpi-card" style="border-top-color:#1d8e72"><div class="label">Cobrado AIC 2026</div><div class="value">$19K</div><div class="sub">Pagos recibidos en el año</div></div>
-        <div class="kpi-card" style="border-top-color:#e8a020"><div class="label">Por cobrar AIC</div><div class="value">$94K</div><div class="sub">Solo proyectos En curso</div></div>
-        <div class="kpi-card" style="border-top-color:#7c5cbf"><div class="label">Total hist. cobrado AIC</div><div class="value">$66K</div><div class="sub">Acumulado todos los años</div></div>
-        <div class="kpi-card" style="border-top-color:#e86040"><div class="label">Total hist. vendido AIC</div><div class="value">$160K</div><div class="sub">Ventas acumuladas todos los años</div></div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Por cobrar AIC — distribución anual</div>
-        <div class="prog-row">
-    <div class="prog-label"><span>2026</span><span>$94,400 <span style="color:#bbb;font-size:10px">(100%)</span></span></div>
-    <div class="prog-track"><div class="prog-fill" style="width:100%;background:#1a3a5c"></div></div>
-  </div>
-        <div class="prog-row">
-    <div class="prog-label"><span>2027</span><span>$0 <span style="color:#bbb;font-size:10px">(0%)</span></span></div>
-    <div class="prog-track"><div class="prog-fill" style="width:0%;background:#e8a020"></div></div>
-  </div>
-        <div class="divider"><span>Total</span><strong>$94,400</strong></div>
-      </div>
-
-      <div class="two-col" style="margin-top:12px">
-        <div class="card">
-          <div class="card-title">Ventas AIC 2026 — por tipo</div>
-          <div class="prog-row">
-    <div class="prog-label"><span>Contrato directo</span><span>$112,000 <span style="color:#bbb;font-size:10px">(100%)</span></span></div>
-    <div class="prog-track"><div class="prog-fill" style="width:100%;background:#1a3a5c"></div></div>
-  </div>
-        </div>
-        <div class="card">
-          <div class="card-title">Ventas AIC Histórico — por tipo</div>
-          <div class="prog-row">
-    <div class="prog-label"><span>Contrato directo</span><span>$160,175 <span style="color:#bbb;font-size:10px">(100%)</span></span></div>
-    <div class="prog-track"><div class="prog-fill" style="width:100%;background:#1a3a5c"></div></div>
-  </div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:12px">
-        <div class="card-title">Ventas AIC 2026 — por sector</div>
-        <div class="sector-grid">
-          <div class="sector-box"><div class="pct" style="color:#1a3a5c">58%</div><div class="name">Transporte</div><div class="val">$65K</div></div><div class="sector-box"><div class="pct" style="color:#1d8e72">31%</div><div class="name">Energía</div><div class="val">$35K</div></div><div class="sector-box"><div class="pct" style="color:#e8a020">11%</div><div class="name">Financiamiento</div><div class="val">$12K</div></div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:12px">
-        <div class="card-title">Ventas AIC Histórico — por sector</div>
-        <div class="sector-grid">
-          <div class="sector-box"><div class="pct" style="color:#1a3a5c">53%</div><div class="name">Transporte</div><div class="val">$84K</div></div><div class="sector-box"><div class="pct" style="color:#1d8e72">40%</div><div class="name">Energía</div><div class="val">$64K</div></div><div class="sector-box"><div class="pct" style="color:#e8a020">7%</div><div class="name">Financiamiento</div><div class="val">$12K</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Histórico -->
-    <div class="section">
-      <div class="section-title"><span></span><h2>Histórico anual — en USD (AIC)</h2></div>
-      <div class="chart-tabs">
-        <button id="tab_ventas" class="chart-tab active" onclick="switchChart(&#39;ventas&#39;)">Ventas AIC</button>
-        <button id="tab_cobros" class="chart-tab" onclick="switchChart(&#39;cobros&#39;)">Cobros AIC</button>
-      </div>
-      <div class="chart-card"><canvas id="mainChart" style="height: 240px; display: block; box-sizing: border-box; width: 910px;" width="1138" height="300"></canvas></div>
-    </div>
-
-    <!-- Tabla proyectos -->
-    <div class="section">
-      <div class="section-title"><span></span><h2>Proyectos en curso — detalle AIC</h2></div>
-      <div class="table-wrap">
-        <div class="table-scroll">
-          <table>
-            <colgroup>
-              <col style="width:8%"><col style="width:10%"><col style="width:22%">
-              <col style="width:12%"><col style="width:9%"><col style="width:12%">
-              <col style="width:12%"><col style="width:15%">
-            </colgroup>
-            <thead><tr>
-              <th>Código</th><th>Cliente</th><th>Proyecto</th>
-              <th>Contrato AIC</th><th>% total</th><th>Cobrado AIC</th><th>Por cobrar AIC</th><th>% cobrado</th>
-            </tr></thead>
-            <tbody>
-              <tr>
-                  <td class="code-cell" title="2026.004">2026.004</td>
-                  <td class="name-cell" title="Consorcio CTC">Consorcio CTC</td>
-                  <td class="desc-cell" title="Factibilidad Ruta PY03">Factibilidad Ruta PY03</td>
-                  <td class="aic-cell">$65,000</td>
-                  <td><div class="pct-bar"><div class="pct-track"><div class="pct-fill-bar" style="width:61%;background:#7ea8d4"></div></div><span style="font-size:10px;color:#6b7a8d;min-width:22px">61%</span></div></td>
-                  <td class="cob-cell" style="color:#6b7a8d">—</td>
-                  <td class="pc-cell" style="color:#e8a020">$65,000</td>
-                  <td><div class="pct-bar"><div class="pct-track"><div class="pct-fill-bar" style="width:0%;background:#6b7a8d"></div></div><span style="font-size:10px;font-weight:600;color:#6b7a8d;min-width:28px">0%</span></div></td>
-                </tr><tr>
-                  <td class="code-cell" title="2026.003">2026.003</td>
-                  <td class="name-cell" title="Javelin Global Commodities">Javelin Global Commodities</td>
-                  <td class="desc-cell" title="Factibilidad Valenzuela">Factibilidad Valenzuela</td>
-                  <td class="aic-cell">$35,000</td>
-                  <td><div class="pct-bar"><div class="pct-track"><div class="pct-fill-bar" style="width:33%;background:#7ea8d4"></div></div><span style="font-size:10px;color:#6b7a8d;min-width:22px">33%</span></div></td>
-                  <td class="cob-cell" style="color:#1d8e72">$10,500</td>
-                  <td class="pc-cell" style="color:#e8a020">$24,500</td>
-                  <td><div class="pct-bar"><div class="pct-track"><div class="pct-fill-bar" style="width:30%;background:#e8a020"></div></div><span style="font-size:10px;font-weight:600;color:#e8a020;min-width:28px">30%</span></div></td>
-                </tr><tr>
-                  <td class="code-cell" title="2026.002">2026.002</td>
-                  <td class="name-cell" title="Financiamiento">Financiamiento</td>
-                  <td class="desc-cell" title="Barcazas">Barcazas</td>
-                  <td class="aic-cell">$7,000</td>
-                  <td><div class="pct-bar"><div class="pct-track"><div class="pct-fill-bar" style="width:7%;background:#7ea8d4"></div></div><span style="font-size:10px;color:#6b7a8d;min-width:22px">7%</span></div></td>
-                  <td class="cob-cell" style="color:#1d8e72">$2,100</td>
-                  <td class="pc-cell" style="color:#e8a020">$4,900</td>
-                  <td><div class="pct-bar"><div class="pct-track"><div class="pct-fill-bar" style="width:30%;background:#e8a020"></div></div><span style="font-size:10px;font-weight:600;color:#e8a020;min-width:28px">30%</span></div></td>
-                </tr>
-            </tbody>
-            <tfoot><tr>
-              <td colspan="3" style="font-size:10px;color:#6b7a8d;text-transform:uppercase">Total</td>
-              <td>$107,000</td>
-              <td style="color:#6b7a8d;font-weight:700">100%</td>
-              <td style="color:#1d8e72">$12,600</td>
-              <td style="color:#e8a020">$94,400</td>
-              <td></td>
-            </tr></tfoot>
-          </table>
-        </div>
-      </div>
-    </div>
-
-  </div></div>
+  <div id="content"></div>
 </div>
 
 <script>
@@ -658,6 +531,5 @@ function init() {
 document.getElementById("tokenInput").addEventListener("keydown",e=>{ if(e.key==="Enter") saveToken(); });
 init();
 </script>
-
-
-</body></html>
+</body>
+</html>
